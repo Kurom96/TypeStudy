@@ -19,3 +19,22 @@ if (examinations.includes("class")) {
 
 	helloPerson(sabro);	
 }
+
+// interface
+if (examinations.includes("interface")) {
+	interface Car {
+		owner: Person,
+		made: number,
+		type: string
+	}
+
+	const hereWeCar = (car: Car): string => `${car.owner.name}'s car is made in ${car.made}. \nThat's ${car.type} type!!`;
+
+	const shiro = new Person("Shiro", 18);
+	const shiroCar = {
+		owner: shiro,
+		made: 1998,
+		type: "Sports"
+	};
+	console.log(hereWeCar(shiroCar));
+}
