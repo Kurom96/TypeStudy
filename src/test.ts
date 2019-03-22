@@ -9,6 +9,34 @@ if (examinations.includes("basic")) {
 }
 
 
+// Types
+if (examinations.includes("types")) {
+	// プリミティブ型
+	const str: string = "もじれつ";
+	const num: number = 123;
+	const bol: boolean = true;
+	const sym: symbol = Symbol("symbol");
+	const n: null = null;
+	const u: undefined = undefined;
+	console.log(str, num, bol, sym, n, u);
+
+	// リテラル型
+	const foo: "foo" = "foo";
+	const bar = "bar";	// 型推論で"bar"型
+	let bar2 = "bar2";	// 型推論でstring型（letで再代入の可能性があるから）
+	console.log(foo, bar, bar2);
+
+	// 配列型
+	const nums: number[] = [0, 1, 2];
+	nums.push(3);
+	console.log(nums);
+
+	// 関数型
+	const fnc: (arg1: string, arg2: number) => string = (arg1, arg2) => `${arg1} => ${arg2}`;
+	console.log(fnc("ほげ", 999));
+}
+
+
 // Class
 if (examinations.includes("class")) {
 	const jiro = new Person("Jiro", 12);
