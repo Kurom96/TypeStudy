@@ -4,7 +4,10 @@
   "description": "",
   "main": "dist/test.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "ts-node src/test.ts",
+    "tsc": "tsc",
+    "clean": "rm -rf dist",
+    "build": "npm run clean && npm run tsc"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +15,7 @@
     "typescript": "^3.3.4000"
   },
   "devDependencies": {
-    "@types/node": "^11.11.5"
+    "@types/node": "^11.11.5",
+    "ts-node": "^8.0.3"
   }
 }
