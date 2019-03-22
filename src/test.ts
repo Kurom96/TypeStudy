@@ -1,6 +1,6 @@
 import Person from './Class/Person';
 
-const examinations: string[] = process.argv.slice(2);
+const examinations: string[] = process.argv.slice(2).map(val => val.toLowerCase());
 
 // Basic
 if (examinations.includes("basic")) {
@@ -37,4 +37,33 @@ if (examinations.includes("interface")) {
 		type: "Sports"
 	};
 	console.log(hereWeCar(shiroCar));
+}
+
+// implements
+if (examinations.includes("implements")) {
+	interface Car {
+		owner: Person,
+		made: number,
+		type: string
+	};
+
+	class OpenCar implements Car {
+		owner: Person;
+		made: number;
+		type: string = "OpenCar";
+
+		constructor(owner: Person, made: number) {
+			this.owner = owner;
+			this.made = made;
+		}
+
+		introduce(): string {
+			return `This ${this.type}'s owner is ${this.owner.name}! since ${this.made}.`;
+		}
+	};
+
+	const goro = new Person("Goro", 56);
+	const openCar = new OpenCar(goro, 1986);
+
+	console.log(openCar.introduce());
 }
