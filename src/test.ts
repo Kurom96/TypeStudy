@@ -1,4 +1,5 @@
 import Person from './Class/Person';
+import Car from './Interface/Car';
 
 const examinations: string[] = process.argv.slice(2).map(val => val.toLowerCase());
 
@@ -51,19 +52,13 @@ if (examinations.includes("class")) {
 
 // interface
 if (examinations.includes("interface")) {
-  interface Car {
-    owner: Person,
-    made: number,
-    type: string
-  }
-
   const hereWeCar = (car: Car): string => `${car.owner.name}'s car is made in ${car.made}. \nThat's ${car.type} type!!`;
 
   const shiro = new Person("Shiro", 18);
-  const shiroCar = {
+  const shiroCar: Car = {
     owner: shiro,
     made: 1998,
-    type: "Sports"
+    type: "sports",
   };
   console.log(hereWeCar(shiroCar));
 }
@@ -71,29 +66,23 @@ if (examinations.includes("interface")) {
 
 // implements
 if (examinations.includes("implements")) {
-  interface Car {
-    owner: Person,
-    made: number,
-    type: string
-  };
-
   class OpenCar implements Car {
     owner: Person;
     made: number;
-    type: string = "OpenCar";
+    type: string = "open";
 
     constructor(owner: Person, made: number) {
       this.owner = owner;
       this.made = made;
     }
 
-    introduce(): string {
-      return `This ${this.type}'s owner is ${this.owner.name}! since ${this.made}.`;
+    hereWeCar(): string {
+      return `${this.owner.name}'s car is made in ${this.made}. \nThat's ${this.type} type!!`
     }
-  };
+  }
 
   const goro = new Person("Goro", 56);
   const openCar = new OpenCar(goro, 1986);
 
-  console.log(openCar.introduce());
+  console.log(openCar.hereWeCar());
 }
