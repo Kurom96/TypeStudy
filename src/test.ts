@@ -21,20 +21,33 @@ if (examinations.includes("types")) {
   const u: undefined = undefined;
   console.log(str, num, bol, sym, n, u);
 
+  // union 型
+  const val1: string | number = "aiueo";
+  const val2: string | number = 12345;
+  // const val3: string | number = true;  // エラー
+
   // リテラル型
   const foo: "foo" = "foo";
   const bar = "bar";	// 型推論で"bar"型
   let bar2 = "bar2";	// 型推論でstring型（letで再代入の可能性があるから）
   console.log(foo, bar, bar2);
 
+  const hello = (name: "foo" | "bar") : string => `Hello ${name}!!!!!!`;
+  console.log(hello(foo));
+
   // 配列型
   const nums: number[] = [0, 1, 2];
   nums.push(3);
   console.log(nums);
 
+  // ジェネリクス
+  const nums2: Array<number> = [3, 4, 5];
+  console.log(nums2);
+
   // 関数型
-  const fnc: (arg1: string, arg2: number) => string = (arg1, arg2) => `${arg1} => ${arg2}`;
-  console.log(fnc("ほげ", 999));
+  type func = (arg1: string, arg2: number) => string;
+  const f: func = (arg1, arg2) => `${arg1} => ${arg2}`;
+  console.log(f("ほげ", 999));
 }
 
 
@@ -59,7 +72,9 @@ if (examinations.includes("interface")) {
     owner: shiro,
     made: 1998,
     type: "sports",
+    // handle: "left"  // エラー
   };
+
   console.log(hereWeCar(shiroCar));
 }
 
